@@ -37,15 +37,22 @@ int main()
 
     int pc = 0;
     while (pc < program.size()) {
-        // std::cout << "PC: " << pc << ", Instruction: " << program[pc].type << " " << program[pc].dest << " " << program[pc].src1 << " " << program[pc].src2 << std::endl;
         if (program[pc].type == "ADD")
             variables[program[pc].dest[0]] = variables[program[pc].src1[0]] + variables[program[pc].src2[0]];
+        else if (program[pc].type == "ADDI")
+            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] + std::stoi(program[pc].src2);
         else if (program[pc].type == "SUB")
             variables[program[pc].dest[0]] = variables[program[pc].src1[0]] - variables[program[pc].src2[0]];
+        else if (program[pc].type == "SUBI")
+            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] - std::stoi(program[pc].src2);
         else if (program[pc].type == "MUL")
             variables[program[pc].dest[0]] = variables[program[pc].src1[0]] * variables[program[pc].src2[0]]; 
+        else if (program[pc].type == "MULI")
+            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] * std::stoi(program[pc].src2);
         else if (program[pc].type == "DIV")
             variables[program[pc].dest[0]] = variables[program[pc].src1[0]] / variables[program[pc].src2[0]]; 
+        else if (program[pc].type == "DIVI")
+            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] / std::stoi(program[pc].src2);
         else if (program[pc].type == "BZ") {
             if (variables[program[pc].src1[0]] == 0) {
                 pc = std::stoi(program[pc].dest) - 1;
