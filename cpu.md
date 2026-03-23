@@ -10,6 +10,6 @@ List of instructions:
 * `BZ src where` - if `src` is equal to zero, jumps to instruction on line `where`
 * `IN dest` - loads input from user into `dest` variable
 * `OUT src` - outputs value of `dest` variable
-* `OUTC src` - outputs value of `dest` variable as ASCII
+* `OUTC ascii` - outputs given integer as ASCII character
 
 There are infinitely many registers available, named `r1, r2, ...`.

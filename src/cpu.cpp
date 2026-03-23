@@ -64,7 +64,7 @@ int main()
         else if (program[pc].type == "OUT")
             std::cout << variables[program[pc].dest[0]] << std::endl;
         else if (program[pc].type == "OUTC")
-            std::cout << (char)variables[program[pc].dest[0]] << std::endl;
+            std::cout << (char)(std::stoi(program[pc].dest));
         else {
             // error
             std::cout << "error: unknown instruction " << program[pc].type << std::endl;
