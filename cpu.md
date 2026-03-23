@@ -12,4 +12,4 @@ List of instructions:
 * `OUT src` - outputs value of `dest` variable
 * `OUTC src` - outputs value of `dest` variable as ASCII
 
-Available variables / registers are: `A, B, ..., Z`
+There are infinitely many registers available, named `r1, r2, ...`.

@@ -65,15 +65,15 @@ foreach(generated_file
     endif()
 endforeach()
 
-add_executable(basic_interpreter
+add_executable(tehpajler
     ${PROJECT_SOURCES}
     ${ANTLR_GENERATED_SOURCES}
     ${ANTLR_GENERATED_HEADERS}
 )
 
-target_include_directories(basic_interpreter PRIVATE
+target_include_directories(tehpajler PRIVATE
     "${SRC_DIR}"
     "${GENERATED_DIR}"
 )
 
-target_link_libraries(basic_interpreter PRIVATE ${ANTLR4_RUNTIME_TARGET})
+target_link_libraries(tehpajler PRIVATE ${ANTLR4_RUNTIME_TARGET})
