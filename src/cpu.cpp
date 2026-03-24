@@ -5,6 +5,7 @@
 #include <sstream>
 #include <map>
 
+
 class Instruction {
 public:
     std::string type;
@@ -30,39 +31,36 @@ int main()
         program.push_back(Instruction(line));
     }
 
-    // variable initialization
-    std::map<char, int> variables;
-    for (char c = 'A'; c <= 'Z'; c++)
-        variables[c] = 0;
+    std::map<std::string, int> variables;
 
     int pc = 0;
     while (pc < program.size()) {
         if (program[pc].type == "ADD")
-            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] + variables[program[pc].src2[0]];
+            variables[program[pc].dest] = variables[program[pc].src1] + variables[program[pc].src2];
         else if (program[pc].type == "ADDI")
-            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] + std::stoi(program[pc].src2);
+            variables[program[pc].dest] = variables[program[pc].src1] + std::stoi(program[pc].src2);
         else if (program[pc].type == "SUB")
-            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] - variables[program[pc].src2[0]];
+            variables[program[pc].dest] = variables[program[pc].src1] - variables[program[pc].src2];
         else if (program[pc].type == "SUBI")
-            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] - std::stoi(program[pc].src2);
+            variables[program[pc].dest] = variables[program[pc].src1] - std::stoi(program[pc].src2);
         else if (program[pc].type == "MUL")
-            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] * variables[program[pc].src2[0]]; 
+            variables[program[pc].dest] = variables[program[pc].src1] * variables[program[pc].src2]; 
         else if (program[pc].type == "MULI")
-            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] * std::stoi(program[pc].src2);
+            variables[program[pc].dest] = variables[program[pc].src1] * std::stoi(program[pc].src2);
         else if (program[pc].type == "DIV")
-            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] / variables[program[pc].src2[0]]; 
+            variables[program[pc].dest] = variables[program[pc].src1] / variables[program[pc].src2]; 
         else if (program[pc].type == "DIVI")
-            variables[program[pc].dest[0]] = variables[program[pc].src1[0]] / std::stoi(program[pc].src2);
+            variables[program[pc].dest] = variables[program[pc].src1] / std::stoi(program[pc].src2);
         else if (program[pc].type == "BZ") {
-            if (variables[program[pc].src1[0]] == 0) {
+            if (variables[program[pc].src1] == 0) {
                 pc = std::stoi(program[pc].dest) - 1;
                 continue;
             }
         }
         else if (program[pc].type == "IN")
-            std::cin >> variables[program[pc].dest[0]];   
+            std::cin >> variables[program[pc].dest];   
         else if (program[pc].type == "OUT")
-            std::cout << variables[program[pc].dest[0]] << std::endl;
+            std::cout << variables[program[pc].dest] << std::endl;
         else if (program[pc].type == "OUTC")
             std::cout << (char)(std::stoi(program[pc].dest));
         else {

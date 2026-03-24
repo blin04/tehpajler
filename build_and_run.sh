@@ -2,4 +2,4 @@ mkdir build
 cd build
 cmake ..
 make 
-./tehpajler
+./tehpajler "../tests/test2.teh"

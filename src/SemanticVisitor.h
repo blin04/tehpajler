@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <unordered_map>
 
 class SemanticVisitor : public TEHParserVisitor 
 {
@@ -12,6 +13,8 @@ class SemanticVisitor : public TEHParserVisitor
         virtual std::any visitDecl(TEHParser::DeclContext *context) override;
 
         virtual std::any visitIfstatement(TEHParser::IfstatementContext *context) override;
+
+        virtual std::any visitElsestatement(TEHParser::ElsestatementContext *context) override;
 
         virtual std::any visitAssignstatement(TEHParser::AssignstatementContext *context) override;
 
@@ -27,8 +30,9 @@ class SemanticVisitor : public TEHParserVisitor
 
         virtual std::any visitStatement(TEHParser::StatementContext *context) override;
 
-    private:
         bool hasErrors = false;
+    private:
         std::vector<std::string> errors;
         std::set<std::string> declIdentifiers; 
+        std::unordered_map<std::string, std::string> variableTypes;
 };

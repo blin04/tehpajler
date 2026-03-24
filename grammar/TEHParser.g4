@@ -6,11 +6,13 @@ prog: (decl)* START (statement)* EOF;
 
 decl: IDENT IDENT (COMMA IDENT)* SEMI;
 
-ifstatement: IF LPAREN expr RPAREN LBRACE (statement)* RBRACE (ELSE LBRACE (statement)* RBRACE)?;
+ifstatement: IF LPAREN expr RPAREN LBRACE (statement)* RBRACE (elsestatement)? ;
+
+elsestatement:ELSE LBRACE (statement)* RBRACE;
 
 assignstatement: IDENT ASSIGN expr SEMI;
 
-printstatement: PRINT LPAREN (STRING | INT | expr)? RPAREN SEMI;
+printstatement: PRINT LPAREN (STRING | expr)? RPAREN SEMI;
 
 addOp: ADD | SUB;
 mulOp: MUL | DIV;

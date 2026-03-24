@@ -24,6 +24,8 @@ endif()
 set(PROJECT_SOURCES
     "${SRC_DIR}/main.cpp"
     "${SRC_DIR}/SemanticVisitor.cpp"
+    "${SRC_DIR}/CodeGenVisitor.cpp"
+    "${SRC_DIR}/Instruction.cpp"
 )
 
 set(ANTLR_GENERATED_SOURCES

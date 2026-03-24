@@ -1,0 +1,15 @@
+int a, b;
+
+start
+
+a = 3;
+b = 5;
+
+if (a + b == 8)
+{
+    print("Izraz je tacan");
+}
+else
+{
+    print("Izraz je netacan");
+}
