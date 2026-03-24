@@ -150,6 +150,7 @@ std::any CodeGenVisitor::visitIfstatement(TEHParser::IfstatementContext *context
         std::string tempReg = getNextRegister();
         addInstruction("SUB", tempReg, tempReg, tempReg); // tempReg = 0
         Instruction* elseJump = addInstruction("BZ", tempReg, ""); 
+        ifJump->src1 = std::to_string(instructions.size() + 1);
         context->elsestatement()->accept(this);
         elseJump->src1 = std::to_string(instructions.size() + 1);
     }
