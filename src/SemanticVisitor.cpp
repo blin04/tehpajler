@@ -15,7 +15,7 @@ any SemanticVisitor::visitProg(TEHParser::ProgContext *context)
         statement->accept(this);
     }
     
-    cout << "Semantic analysis completed with " << errors.size() << " errors!" << endl;
+    // cout << "Semantic analysis completed with " << errors.size() << " errors!" << endl;
     
     if (hasErrors)
     {

@@ -1,9 +1,14 @@
+#pragma once
+
 #include "TEHParserVisitor.h"
 #include "Instruction.h"
 
 class CodeGenVisitor : public TEHParserVisitor 
 {
     public:
+        CodeGenVisitor(const std::string &outputFile = "program.out", bool debug = false) 
+            : debug(debug), output_location(outputFile) {}
+
         virtual std::any visitProg(TEHParser::ProgContext *context) override;
 
         // gives each variable a unique register, no return value
@@ -43,7 +48,8 @@ class CodeGenVisitor : public TEHParserVisitor
         std::map<std::string, int> variableToRegister;
         std::vector<Instruction*> instructions;
         int nextFreeRegister = 0;
-        std::string output_location = "program.out";
+        std::string output_location;
+        bool debug;
 
         void setOutputLocation(const std::string &filename);
 

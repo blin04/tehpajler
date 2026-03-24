@@ -5,7 +5,7 @@ start
 a = 3;
 b = 5;
 
-if (a + b == 8)
+if (a + b == 9)
 {
     print("Izraz je tacan");
 }

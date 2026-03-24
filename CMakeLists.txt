@@ -26,6 +26,7 @@ set(PROJECT_SOURCES
     "${SRC_DIR}/SemanticVisitor.cpp"
     "${SRC_DIR}/CodeGenVisitor.cpp"
     "${SRC_DIR}/Instruction.cpp"
+    "${SRC_DIR}/cpu.cpp"
 )
 
 set(ANTLR_GENERATED_SOURCES

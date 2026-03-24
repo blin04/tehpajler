@@ -47,8 +47,10 @@ std::any CodeGenVisitor::visitProg(TEHParser::ProgContext *context)
         statement->accept(this);
     }
     generateToFile(output_location);
-    for (Instruction* instr : instructions) {
-        std::cout << instr->type << " " << instr->dest << " " << instr->src1 << " " << instr->src2 << std::endl;
+    if (debug) {
+        for (Instruction* instr : instructions) {
+            std::cout << instr->type << " " << instr->dest << " " << instr->src1 << " " << instr->src2 << std::endl;
+        }
     }
     return 0;
 }

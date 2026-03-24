@@ -7,7 +7,9 @@ List of instructions:
 * `MULI dest src1 const` - `dest = src1 * const`
 * `DIV dest src1 src2` - `dest = src1 / src2`
 * `DIVI dest src1 const` - `dest = src1 / const`
-* `BZ src where` - if `src` is equal to zero, jumps to instruction on line `where`
+* `BZ where src` - if `src` is equal to zero, jumps to instruction on line `where`
+* `BP where src` - if `src` is positive, jump to instruction on line `where`
+* `BN where src` - if `src` is negative, jump to instruction on line `where`
 * `IN dest` - loads input from user into `dest` variable
 * `OUT src` - outputs value of `dest` variable
 * `OUTC ascii` - outputs given integer as ASCII character

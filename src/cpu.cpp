@@ -5,34 +5,19 @@
 #include <sstream>
 #include <map>
 
+#include "Instruction.h"
+#include "cpu.h"
 
-class Instruction {
-public:
-    std::string type;
-    std::string dest;
-    std::string src1;
-    std::string src2;
-
-    Instruction(std::string line) : type(""), dest(""), src1(""), src2("") {
-        std::stringstream ss(line);
-        ss >> type;
-        if (type == "IN" || type == "OUT" || type == "OUTC") ss >> dest;
-        else if (type == "BZ" || type == "BP" || type == "BN") ss >> src1 >> dest;
-        else ss >> dest >> src1 >> src2; 
-    }
-};
-
-int main() 
-{
-    std::ifstream source("../build/program.out", std::ios::in);    
-
-    std::vector<Instruction> program;
-    for (std::string line; std::getline(source, line);) {
+CPU::CPU(std::string source) {
+    this->source.open(source, std::ios::in);
+    for (std::string line; std::getline(this->source, line);) {
         program.push_back(Instruction(line));
     }
+}
 
-    std::map<std::string, int> variables;
+CPU::~CPU() { this->source.close(); }
 
+void CPU::execute()  {
     int pc = 0;
     while (pc < program.size()) {
         if (program[pc].type == "ADD")
@@ -78,9 +63,8 @@ int main()
         else {
             // error
             std::cout << "error: unknown instruction " << program[pc].type << std::endl;
-            break;
+            return;
         }
         pc++;
     }
-    return 0;
 }

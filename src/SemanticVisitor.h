@@ -1,3 +1,5 @@
+#pragma once
+
 #include "TEHParserVisitor.h"
 
 #include <vector>
