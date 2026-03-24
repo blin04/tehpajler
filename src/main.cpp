@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
   SemanticVisitor visitor;
   tree->accept(&visitor);
 
-  if (debug && visitor.hasErrors) {
+  if (visitor.hasErrors) {
     std::cout << "Semantic errors detected!\n";
     return 1;
   }

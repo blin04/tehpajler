@@ -1,8 +1,23 @@
-int a, b, c;
+int a, b;
+int x;
 
 start
 
+print("Unesi parametre za jednacinu: ax - b = 0");
+print("a: ");
 input(a);
+print("b: ");
 input(b);
 
-c = a + b * b;
+x = b / a;
+
+if (a * x - b == 0)
+{
+    print("Resenje je celobrojno, x: ");
+    print(x);
+}
+else
+{
+    print("Resenje nije celobrojno, x: ");
+    print(x);
+}

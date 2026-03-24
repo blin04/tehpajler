@@ -206,16 +206,10 @@ any SemanticVisitor::visitExpr(TEHParser::ExprContext *context)
 
     if (context->relOp() != nullptr)
     {
-        bool validComparison =
-            (leftType == "bool" && rightType == "bool") ||
-            (leftType == "bool" && rightType == "int") ||
-            (leftType == "int" && rightType == "bool") ||
-            (leftType == "int" && rightType == "int");
-
-        if (!validComparison)
+        if (leftType != rightType)
         {
             hasErrors = true;
-            errors.push_back("Error: Comparison expressions can only use bool and int operands.");
+            errors.push_back("Error: Comparison expressions require operands of the same type.");
             return string("invalid");
         }
 
