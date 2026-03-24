@@ -2,6 +2,7 @@ lexer grammar TEHLexer;
 
 START: 'start';
 PRINT: 'print';
+INPUT: 'input';
 IF: 'if';
 ELSE: 'else';
 

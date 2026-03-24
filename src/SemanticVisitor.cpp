@@ -242,5 +242,24 @@ any SemanticVisitor::visitStatement(TEHParser::StatementContext *context)
         return context->printstatement()->accept(this);
     }
 
+    if (context->inputstatement() != nullptr)
+    {
+        return context->inputstatement()->accept(this);
+    }
+
+    return 0;
+}
+
+any SemanticVisitor::visitInputstatement(TEHParser::InputstatementContext *context) 
+{
+    string varName = context->IDENT()->getText();
+
+    if (declIdentifiers.find(varName) == declIdentifiers.end())
+    {
+        hasErrors = true;
+        errors.push_back("Error: Variable '" + varName + "' is not declared.");
+        return 0;
+    }
+
     return 0;
 }

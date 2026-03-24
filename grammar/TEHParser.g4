@@ -14,6 +14,8 @@ assignstatement: IDENT ASSIGN expr SEMI;
 
 printstatement: PRINT LPAREN (STRING | expr)? RPAREN SEMI;
 
+inputstatement: INPUT LPAREN IDENT RPAREN SEMI;
+
 addOp: ADD | SUB;
 mulOp: MUL | DIV;
 relOp: EQUALS;
@@ -24,4 +26,4 @@ expr: expr mulOp expr | expr addOp expr | expr relOp expr
     | LPAREN expr RPAREN
     ;
 
-statement: ifstatement | assignstatement | printstatement;
+statement: ifstatement | assignstatement | printstatement | inputstatement;

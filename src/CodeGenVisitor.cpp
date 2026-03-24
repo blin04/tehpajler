@@ -228,5 +228,17 @@ std::any CodeGenVisitor::visitStatement(TEHParser::StatementContext *context)
     {
         return context->printstatement()->accept(this);
     }
+
+    if (context->inputstatement() != nullptr)
+    {
+        return context->inputstatement()->accept(this);
+    }
+    return 0;
+}
+
+std::any CodeGenVisitor::visitInputstatement(TEHParser::InputstatementContext *context) 
+{
+    std::string dest = getRegisterForVariable(context->IDENT()->getText());
+    addInstruction("IN", dest);
     return 0;
 }

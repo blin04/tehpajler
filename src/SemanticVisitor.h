@@ -30,6 +30,8 @@ class SemanticVisitor : public TEHParserVisitor
 
         virtual std::any visitStatement(TEHParser::StatementContext *context) override;
 
+        virtual std::any visitInputstatement(TEHParser::InputstatementContext *context) override;
+
         bool hasErrors = false;
     private:
         std::vector<std::string> errors;

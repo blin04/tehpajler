@@ -3,10 +3,10 @@ int y;
 
 start
 
-x = 4;
-y = 4;
+input(x);
+input(y);
 
 if (x + 2 == y + 2)
 {
-    print("x je jednak 4");
+    print("x je jednak y");
 }

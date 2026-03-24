@@ -36,6 +36,9 @@ class CodeGenVisitor : public TEHParserVisitor
         // only adds instructions, no return value
         virtual std::any visitStatement(TEHParser::StatementContext *context) override;
 
+        // to be implemented
+        virtual std::any visitInputstatement(TEHParser::InputstatementContext *context) override;
+
     private:
         std::map<std::string, int> variableToRegister;
         std::vector<Instruction*> instructions;
