@@ -3,3 +3,8 @@ src/cpu
 generated/
 .vscode/
 *.sh
+
+guiView/*.java
+guiView/*.class
+guiView/*.interp
+guiView/*.tokens

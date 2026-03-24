@@ -1,0 +1,5 @@
+source ~/.zshrc
+
+antlr4 TEHParser.g4
+javac *.java
+grun TEHParser prog -gui < ../tests/test3.teh
