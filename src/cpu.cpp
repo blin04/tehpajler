@@ -17,7 +17,7 @@ public:
         std::stringstream ss(line);
         ss >> type;
         if (type == "IN" || type == "OUT" || type == "OUTC") ss >> dest;
-        else if (type == "BZ") ss >> src1 >> dest;
+        else if (type == "BZ" || type == "BP" || type == "BN") ss >> src1 >> dest;
         else ss >> dest >> src1 >> src2; 
     }
 };
@@ -53,6 +53,18 @@ int main()
             variables[program[pc].dest] = variables[program[pc].src1] / std::stoi(program[pc].src2);
         else if (program[pc].type == "BZ") {
             if (variables[program[pc].src1] == 0) {
+                pc = std::stoi(program[pc].dest) - 1;
+                continue;
+            }
+        }
+        else if (program[pc].type == "BP") {
+            if (variables[program[pc].src1] > 0) {
+                pc = std::stoi(program[pc].dest) - 1;
+                continue;
+            }
+        }
+        else if (program[pc].type == "BN") {
+            if (variables[program[pc].src1] < 0) {
                 pc = std::stoi(program[pc].dest) - 1;
                 continue;
             }
